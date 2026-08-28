@@ -1,0 +1,64 @@
+@import "tailwindcss";
+
+@theme {
+  --font-serif: "EB Garamond", Georgia, serif;
+  --font-sans: "Archivo", system-ui, sans-serif;
+  --animate-view-in: viewIn 0.32s cubic-bezier(.34,1.3,.64,1) both;
+}
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+  }
+
+  body {
+    @apply min-h-screen overflow-x-hidden bg-white font-serif text-[#0f0f0f] antialiased;
+  }
+
+  #root {
+    @apply flex min-h-screen w-full;
+  }
+
+  button {
+    @apply cursor-pointer;
+  }
+}
+
+@layer components {
+  .view-in {
+    animation: viewIn 0.45s cubic-bezier(.2,.8,.2,1) both;
+    @apply my-auto w-full;
+  }
+
+  .mdx-content p {
+    margin: 0 0 1em;
+  }
+
+  .mdx-content h1,
+  .mdx-content h2,
+  .mdx-content h3 {
+    margin: 1.4em 0 .5em;
+    font-family: var(--font-serif);
+  }
+
+  .mdx-content ul,
+  .mdx-content ol {
+    margin: 0 0 1em 1.25em;
+  }
+
+  .mdx-content a {
+    text-decoration: underline;
+  }
+}
+
+@keyframes viewIn {
+  from {
+    opacity: 0;
+    transform: translateY(18px) scale(0.985);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
