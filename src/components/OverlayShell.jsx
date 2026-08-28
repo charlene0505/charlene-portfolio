@@ -9,6 +9,9 @@ export default function OverlayShell({
   showTabs = true,
   children,
 }) {
+  const item = column.items[activeItem]
+  const glowColor = item?.nameColor || "#6db2f2"
+
   return (
     <div className="view-in px-6 pb-10 pt-5 bg-white">
       <button
@@ -21,16 +24,24 @@ export default function OverlayShell({
       <div className="relative mx-auto min-h-[80vh] max-w-295">
         {!isMobile && (
           <div
-            className="absolute -inset-8 rounded-[40px] bg-[#6db2f2] opacity-70 blur-2xl"
+            className="absolute -inset-8 animate-shimmer rounded-[40px] opacity-70 blur-2xl"
+            style={{
+              backgroundImage: `linear-gradient(115deg,
+                color-mix(in srgb, ${glowColor} 55%, white),
+                color-mix(in srgb, ${glowColor} 25%, white),
+                ${glowColor},
+                color-mix(in srgb, ${glowColor} 70%, black))`,
+              backgroundSize: "300% 300%",
+            }}
             aria-hidden="true"
           />
         )}
 
         <div
-          className={`relative min-h-[80vh] w-auto rounded-[10px] ${
+          className={`relative flex min-h-[80vh] w-auto rounded-xl ${
             isMobile
-              ? 'bg-transparent px-1.5 pb-[30px] pt-1.5'
-              : 'border border-[#111] bg-white px-15 pb-10 pt-10'
+              ? "bg-transparent px-1.5 pb-[30px] pt-1.5"
+              : "border border-[#111] bg-white pb-0 pr-10"
           }`}
         >
           {showTabs && column.items.length > 1 && (
@@ -46,7 +57,7 @@ export default function OverlayShell({
             </div>
           )}
 
-          {children}
+          <div className="flex-1">{children}</div>
         </div>
       </div>
 
@@ -54,5 +65,5 @@ export default function OverlayShell({
         <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] border-[3px] border-[#7fb3ef]" />
       )}
     </div>
-  )
+  );
 }

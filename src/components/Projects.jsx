@@ -2,6 +2,7 @@ import { Suspense, lazy } from 'react'
 import OverlayShell from './OverlayShell'
 
 const ThreeShowcase = lazy(() => import('./ThreeShowcase'))
+const ColoringBook = lazy(() => import("./ColoringBook"));
 
 export default function Projects({ isMobile, column, activeItem, onSetActiveItem, onBack }) {
   const item = column.items[activeItem]
@@ -15,29 +16,76 @@ export default function Projects({ isMobile, column, activeItem, onSetActiveItem
       onBack={onBack}
     >
       <div
-        className={`grid grid-cols-[280px_1fr] items-start ${isMobile ? 'gap-[26px]' : 'gap-[54px]'}`}
+        className={` h-full grid grid-rows-[280px_1fr] md:grid-rows-none md:grid-cols-[280px_1fr] items-stretch ${isMobile ? "gap-6" : "gap-14"}`}
       >
-        <div className="flex flex-col  min-w-[220px] ">
-          <h2 className="mb-4 mt-0 font-sans text-[52px] font-semibold leading-[.96] tracking-[-1.5px] text-[#0c0c0c]">
-            {item.name}
-          </h2>
-          <div className="mb-6 font-sans text-[19px] font-medium text-[#0c2a52]">
-            {item.timeline}
+        <div className="flex flex-col md:border-r h-full min-w-55 justify-between ">
+          <div className="flex flex-col">
+            <h2
+              className="md:rounded-tl-xl pt-3 pb-10 md:pb-30 font-news text-6xl text-white font-semibold leading-[.96] tracking-[-1.5px]"
+              style={{ backgroundColor: item.nameColor || "#000000" }}
+            >
+              {item.name}
+            </h2>
+            <h6
+              className="font-news text-2xl text-white/50 font-light leading-[.96] tracking-[-1.5px]"
+              style={{ backgroundColor: item.nameColor || "#000000" }}
+            >
+              built by
+            </h6>
+            <div className="flex w-full flex-wrap">
+              {item.tags.map((tag) => (
+                <span
+                  key={tag}
+                  className=" flex flex-1 bg-neutral-200 px-4 py-2 font-news text-sm font-bold text-[#0f0f0f]"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+            <div className="flex flex-col gap-4 px-5 py-5">
+              {(Array.isArray(item.desc) ? item.desc : [item.desc]).map(
+                (paragraph, i) => (
+                  <p
+                    key={i}
+                    className="whitespace-pre-line font-news text-base font-normal leading-[1.7] text-neutral-700"
+                  >
+                    {paragraph}
+                  </p>
+                ),
+              )}
+            </div>
           </div>
-          <div className="flex max-w-[230px] flex-wrap gap-[9px]">
-            {item.tags.map((tag) => (
-              <span
-                key={tag}
-                className="rounded-full bg-blue-200 px-4 py-[7px] font-sans text-[13.5px] font-medium text-[#0f0f0f]"
+
+          <div className="flex flex-wrap justify-end pr-5 items-center gap-x-4 gap-y-2">
+            <span className="font-news text-lg font-medium text-[#0f0f0f]">
+              {item.timeline}
+            </span>
+            {item.githubLink && (
+              <a
+                className="font-news text-lg font-semibold text-[#0f0f0f] underline"
+                href={item.githubLink}
+                target="_blank"
+                rel="noopener noreferrer"
               >
-                {tag}
-              </span>
-            ))}
+                Github ↗
+              </a>
+            )}
+            {item.demoLink && (
+              <a
+                className="font-news text-lg font-semibold text-[#0f0f0f] underline"
+                href={item.demoLink}
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                Live demo ↗
+              </a>
+            )}
           </div>
         </div>
-        <div className="flex flex-col">
-          {item.embed === 'three-demo' ? (
-            <div className="flex-[1_1_400px]">
+
+        <div className="flex flex-col pt-60 md:py-20">
+          {item.embed === "color-book" ? (
+            <div className="flex-[1_1_200px]">
               <Suspense
                 fallback={
                   <div className="flex aspect-[16/11] items-center justify-center rounded-2xl bg-[#d8d8d8] font-sans text-[15px] text-[#7a7a7a]">
@@ -45,12 +93,12 @@ export default function Projects({ isMobile, column, activeItem, onSetActiveItem
                   </div>
                 }
               >
-                <ThreeShowcase />
+                <ColoringBook isMobile={isMobile} />
               </Suspense>
             </div>
           ) : (
             <div
-              className={`grid flex-[1_1_400px] gap-[18px] ${isMobile ? 'grid-cols-2' : 'grid-cols-3'}`}
+              className={`grid flex-[1_1_400px] gap-[18px] ${isMobile ? "grid-cols-2" : "grid-cols-3"}`}
             >
               {item.images.length > 0
                 ? item.images.map((src, i) => (
@@ -77,22 +125,8 @@ export default function Projects({ isMobile, column, activeItem, onSetActiveItem
                   ))}
             </div>
           )}
-          <p className="mt-10 max-w-[760px] font-sans text-base font-normal leading-[1.7] text-[#0d0d0d]">
-            {item.desc}
-          </p>
-
-          <div className="mt-[26px] flex justify-end">
-            <a
-              className="rounded-full bg-white px-[30px] py-3.5 font-sans text-[15px] font-semibold text-[#0f0f0f] no-underline"
-              href={item.link}
-              target="_blank"
-              rel="noopener noreferrer"
-            >
-              Github ↗ / Live demo ↗
-            </a>
-          </div>
         </div>
       </div>
     </OverlayShell>
-  )
+  );
 }
