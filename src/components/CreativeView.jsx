@@ -139,7 +139,7 @@ export default function CreativeView({ isMobile, column, subKey, itemKey, onNavi
           }`}
         >
           {!activePost && (
-            <div className="mb-8 inline-flex w-fit gap-2 border">
+            <div className="mb-8 w-full inline-flex md:w-fit md:gap-2 border justify-between ">
               {subcategories.map((sub) => (
                 <PillTab
                   key={sub.id}

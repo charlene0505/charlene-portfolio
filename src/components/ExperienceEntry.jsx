@@ -14,12 +14,12 @@ export default function ExperienceEntry({ role, company, timeline, description, 
         {company}
       </div>
 
-      <p className="mt-3 max-w-[640px] font-sans text-[15px] whitespace-pre-wrap font-normal leading-[1.7] text-[#0d0d0d]">
+      <p className="mt-3 w-auto md:max-w-160 font-sans text-[15px] whitespace-pre-wrap font-normal leading-[1.7] text-[#0d0d0d]">
         {description}
       </p>
 
       {tags?.length > 0 && (
-        <div className="mt-3 flex flex-nowrap gap-1.5 overflow-x-auto">
+        <div className="mt-3 flex flex-wrap gap-1.5 overflow-x-auto">
           {tags.map((tag) => (
             <span
               key={tag}
