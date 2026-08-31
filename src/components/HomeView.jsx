@@ -1,4 +1,4 @@
-import Header from './Header'
+import RollingBanner from './RollingBanner'
 import Folder from './Folder'
 import useStageFit from '../hooks/useStageFit'
 import { columns } from '../data/columns'
@@ -16,7 +16,7 @@ function DesktopHome({ positions, hovered, onHover, onMove, onOpen }) {
   return (
     <div
       ref={shellRef}
-      className="mx-auto mt-5"
+      className="mx-auto mt-0"
       style={{ width: STAGE_WIDTH * scale, height: height || undefined }}
     >
       <div
@@ -73,7 +73,10 @@ function DesktopHome({ positions, hovered, onHover, onMove, onOpen }) {
 
 function MobileHome({ selected, onTap, onDeselect }) {
   return (
-    <div className="relative z-1 px-1.5 pb-11 pt-2" onClick={onDeselect}>
+    <div
+      className="relative z-1 mx-auto w-full max-w-105 px-8 pb-8 pt-2"
+      onClick={onDeselect}
+    >
       <div className="flex aspect-auto max-h-82.5 w-full items-center justify-start overflow-hidden rounded-xl bg-white">
         <img
           src="/assets/charlene-profile-riso.png"
@@ -115,8 +118,8 @@ export default function HomeView({
   onDeselect,
 }) {
   return (
-    <div className="view-in px-6 pb-20 pt-0">
-      <Header />
+    <div className="view-in flex flex-col  ">
+      <RollingBanner />
       {isMobile ? (
         <MobileHome
           selected={selected}
@@ -124,14 +127,17 @@ export default function HomeView({
           onDeselect={onDeselect}
         />
       ) : (
-        <DesktopHome
-          positions={positions}
-          hovered={hovered}
-          onHover={onHover}
-          onMove={onMove}
-          onOpen={onOpen}
-        />
+        <div className="flex min-h-0 flex-1 flex-col justify-center px-20">
+          <DesktopHome
+            positions={positions}
+            hovered={hovered}
+            onHover={onHover}
+            onMove={onMove}
+            onOpen={onOpen}
+          />
+        </div>
       )}
+      <RollingBanner reverse />
       {isMobile && (
         <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] outline-30 outline-[#a8d91f]" />
       )}

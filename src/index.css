@@ -30,7 +30,7 @@
 @layer components {
   .view-in {
     animation: viewIn 0.45s cubic-bezier(.2,.8,.2,1) both;
-    @apply mx-auto w-full;
+    @apply max-h-full w-full;
   }
 
   .mdx-content p {

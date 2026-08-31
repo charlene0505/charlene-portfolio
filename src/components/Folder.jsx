@@ -1,4 +1,5 @@
 import { useRef } from 'react'
+import IconStack from './IconStack'
 
 function LabelStrip() {
   return (
@@ -25,13 +26,17 @@ function MobileFolder({ column, index, selected, onTap }) {
         transform: `translateY(${isSelected ? -34 : 0}px)`,
       }}
       onClick={(event) => {
-        event.stopPropagation()
-        onTap(index)
+        event.stopPropagation();
+        onTap(index);
       }}
     >
       <div
         className="absolute left-0 top-[-29px] z-[2] rounded-[15px_18px_0_0] bg-[#c3ed1c] px-[26px] pb-[7px] pt-1.5 transition-shadow duration-[420ms]"
-        style={{ boxShadow: isSelected ? '0 -4px 10px -4px rgba(0,0,0,0.25)' : 'none' }}
+        style={{
+          boxShadow: isSelected
+            ? "0 -4px 10px -4px rgba(0,0,0,0.25)"
+            : "0 -2px 5px -2px rgba(0,0,0,0.25)",
+        }}
       >
         <span className="whitespace-nowrap font-serif text-[23px] leading-none text-[#111]">
           {column.label}
@@ -39,17 +44,16 @@ function MobileFolder({ column, index, selected, onTap }) {
       </div>
       <div
         className="relative min-h-[118px] rounded-[1px_20px_20px_20px] bg-[#c3ed1c] px-[26px] py-10 transition-shadow duration-[420ms]"
-        style={{ boxShadow: isSelected ? '0 -4px 10px rgba(0,0,0,0.25)' : 'none' }}
+        style={{
+          boxShadow: isSelected
+            ? "0 -4px 10px -4px rgba(0,0,0,0.25)"
+            : "0 -2px 5px -2px rgba(0,0,0,0.25)",
+        }}
       >
-        <div className="font-sans text-[44px] font-extrabold italic leading-none tracking-[-1.8px] text-[#111]">
-          {column.name}
-        </div>
-        <div className="mt-3 max-w-[78%] font-sans text-[13.5px] font-medium italic text-[#3d4a08]">
-          {column.subtitle}
-        </div>
+        {/* reserved for the icon-stack hover/click animation */}
       </div>
     </div>
-  )
+  );
 }
 
 function DesktopFolder({ column, index, position, hovered, onHover, onOpen, onMove, scale = 1 }) {
@@ -117,14 +121,14 @@ function DesktopFolder({ column, index, position, hovered, onHover, onOpen, onMo
     >
       <div
         className="absolute left-[18px] right-[18px] top-0 z-0 -rotate-[1.4deg] rounded-[7px] bg-white px-[18px] pb-[22px] pt-4 transition-transform duration-300 ease-[cubic-bezier(.2,.8,.2,1)]"
-        style={{ transform: `translateY(${isHovered ? -36 : -16}px) rotate(-1.4deg)` }}
+        style={{
+          transform: `translateY(${isHovered ? -36 : -16}px) rotate(-1.4deg)`,
+        }}
       >
-        <div className="font-sans text-[30px] font-extrabold italic leading-none tracking-[-1.2px] text-[#111]">
-          {column.name}
-        </div>
-        <div className="mt-1.5 font-sans text-[9.5px] font-medium italic tracking-[.02em] text-[#666]">
-          {column.subtitle}
-        </div>
+        <span className="font-serif text-[27px] text-[#111]">
+          {column.label}
+        </span>
+        <div className="min-h-11.75" />
         <div className="absolute right-[-7px] top-4 flex flex-col items-end gap-[5px]">
           <LabelStrip />
         </div>
@@ -132,12 +136,12 @@ function DesktopFolder({ column, index, position, hovered, onHover, onOpen, onMo
 
       <div className="relative z-[1] mt-[58px]">
         <div className="absolute left-0 top-[-13px] h-4 w-[100px] rounded-[8px_12px_0_0] bg-[#c3ed1c]" />
-        <div className="relative flex h-[122px] items-end rounded-[2px_15px_15px_15px] bg-[#c3ed1c] px-[18px] pb-4">
-          <span className="font-serif text-[27px] text-[#111]">{column.label}</span>
+        <div className="relative flex h-31 items-end overflow-hidden rounded-[2px_15px_15px_15px] bg-[#c3ed1c] px-[18px] pb-4">
+          {column.icons && <IconStack icons={column.icons} active={isHovered} />}
         </div>
       </div>
     </div>
-  )
+  );
 }
 
 export default function Folder(props) {

@@ -10,6 +10,13 @@ export const columns = [
     label: "(Creative)",
     name: "Notebook",
     subtitle: "Sketches & Writing",
+    icons: [
+      "/assets/smilyface_blue.png",
+      "/assets/smilyface_yellow.png",
+      "/assets/smilyface_pink.png",
+      "/assets/smilyface_bluegradient.png",
+      "/assets/smilyface_purplegradient.png",
+    ],
     subcategories: [
       { id: "writing", label: "Writing", kind: "writing", items: writingPosts },
       {
