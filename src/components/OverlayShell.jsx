@@ -1,4 +1,5 @@
 import PillTab from './Tab'
+import Breadcrumb from './Breadcrumb'
 
 export default function OverlayShell({
   isMobile,
@@ -14,17 +15,14 @@ export default function OverlayShell({
 
   return (
     <div className="view-in px-6 pb-10 pt-5 bg-white">
-      <button
-        className="flex cursor-pointer items-center gap-2.5 bg-transparent px-1.5 pb-3.5 pt-[30px] font-sans text-[15px] text-[#0f0f0f]"
-        onClick={onBack}
-      >
-        <span className="inline-block text-[30px] leading-none">←</span>
-      </button>
+      <Breadcrumb
+        items={[{ label: 'Home', onClick: onBack }, { label: column.name }]}
+      />
 
       <div className="relative mx-auto min-h-[80vh] max-w-295">
         {!isMobile && (
           <div
-            className="absolute -inset-8 animate-shimmer rounded-[40px] opacity-70 blur-2xl"
+            className="pointer-events-none absolute -inset-8 animate-shimmer rounded-[40px] opacity-70 blur-2xl"
             style={{
               backgroundImage: `linear-gradient(115deg,
                 color-mix(in srgb, ${glowColor} 55%, white),

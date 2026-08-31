@@ -6,40 +6,6 @@ import { crafts } from "./crafts";
 
 export const columns = [
   {
-    id: "creative",
-    label: "(Creative)",
-    name: "Notebook",
-    subtitle: "Sketches & Writing",
-    icons: [
-      "/assets/smilyface_blue.png",
-      "/assets/smilyface_yellow.png",
-      "/assets/smilyface_pink.png",
-      "/assets/smilyface_bluegradient.png",
-      "/assets/smilyface_purplegradient.png",
-    ],
-    subcategories: [
-      { id: "writing", label: "Writing", kind: "writing", items: writingPosts },
-      {
-        id: "sketching",
-        label: "Sketching",
-        kind: "sketching",
-        items: sketches,
-      },
-      {
-        id: "photography",
-        label: "photography",
-        kind: "photography",
-        items: photos,
-      },
-      {
-        id: "crafts",
-        label: "crafts",
-        kind: "crafts",
-        items: crafts,
-      },
-    ],
-  },
-  {
     id: "work",
     label: "(Experience)",
     name: "Experience",
@@ -115,7 +81,7 @@ export const columns = [
   {
     id: "tech",
     label: "(Fun Tech)",
-    name: "24ish",
+    name: "Fun Tech",
     subtitle: "OneHourAPicture — Photo Sharing App",
     layout: "projects",
     items: [
@@ -165,6 +131,40 @@ export const columns = [
       //   embed: "three-demo",
       //   desc: "[Placeholder — please confirm/expand] ",
       // },
+    ],
+  },
+  {
+    id: "creative",
+    label: "(Creative)",
+    name: "Creative",
+    subtitle: "Sketches & Writing",
+    icons: [
+      "/assets/smilyface_blue.png",
+      "/assets/smilyface_yellow.png",
+      "/assets/smilyface_pink.png",
+      "/assets/smilyface_bluegradient.png",
+      "/assets/smilyface_purplegradient.png",
+    ],
+    subcategories: [
+      { id: "writing", label: "Writing", kind: "writing", items: writingPosts },
+      {
+        id: "sketching",
+        label: "Sketching",
+        kind: "sketching",
+        items: sketches,
+      },
+      {
+        id: "photography",
+        label: "Photography",
+        kind: "photography",
+        items: photos,
+      },
+      {
+        id: "crafts",
+        label: "Crafts",
+        kind: "crafts",
+        items: crafts,
+      },
     ],
   },
 ];

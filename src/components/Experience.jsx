@@ -81,7 +81,7 @@ function Roles({ scrollable }) {
     <div
       className={`flex flex-col gap-8 px-8 py-4 ${
         scrollable
-          ? "max-h-[75vh] overflow-y-auto pr-3 [scrollbar-color:rgba(0,0,0,0.2)_transparent] [scrollbar-width:thin]"
+          ? "self-stretch overflow-y-auto pr-3 [scrollbar-color:rgba(0,0,0,0.2)_transparent] [scrollbar-width:thin]"
           : ""
       }`}
     >
@@ -107,8 +107,8 @@ export default function Experience({ isMobile, column, onBack }) {
           <Roles scrollable={false} />
         </div>
       ) : (
-        <div className="grid grid-cols-[280px_1fr] items-start gap-14 px-8 py-4">
-          <div className="flex min-w-55 flex-col gap-7 white-space: pre-line">
+        <div className="grid h-[80vh] grid-cols-[280px_1fr] grid-rows-[minmax(0,1fr)] items-start gap-14 px-8 py-4">
+          <div className="flex min-w-55 flex-col gap-7 self-stretch overflow-y-auto pr-3 [scrollbar-color:rgba(0,0,0,0.2)_transparent] [scrollbar-width:thin]">
             <Summary column={column} />
             <SkillGroups />
           </div>

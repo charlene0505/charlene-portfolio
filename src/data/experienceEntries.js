@@ -27,7 +27,7 @@ export const experienceEntries = [
   {
     role: "Software Developer",
     company: "AWO",
-    timeline: "Jan 2025 — May 2025",
+    timeline: "Jan 2025 — Sept 2025",
     description:
       "- Built a full stack e-commerce platform end to end in a small startup team: a React and Tailwind CSS frontend with cart state management and client side form validation, a Python Flask REST API backed by Firebase Firestore for real time data sync, and Firebase Auth for secure user authentication. \n- Integrated the Shopify Storefront API through a custom app extension, handling inventory sync, webhook driven order processing, and payment gateway integration, so orders placed on the storefront stayed consistent with inventory and fulfillment on the backend.",
     tags: [

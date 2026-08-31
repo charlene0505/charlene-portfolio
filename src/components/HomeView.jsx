@@ -2,6 +2,7 @@ import RollingBanner from './RollingBanner'
 import Folder from './Folder'
 import useStageFit from '../hooks/useStageFit'
 import { columns } from '../data/columns'
+import ArrowUpRight from '../../public/assets/ArrowUpRight'
 
 const INTRO_TEXT =
   "I'm a full stack developer with experience shipping features end to end, with background across design, business and computer science." +
@@ -21,7 +22,11 @@ function DesktopHome({ positions, hovered, onHover, onMove, onOpen }) {
       <div
         ref={stageRef}
         className="relative"
-        style={{ width: STAGE_WIDTH, transform: `scale(${scale})`, transformOrigin: 'top left' }}
+        style={{
+          width: STAGE_WIDTH,
+          transform: `scale(${scale})`,
+          transformOrigin: "top left",
+        }}
       >
         <div
           className="absolute inset-[-30px] rounded-[52px] bg-[#cdef7e] blur-md"
@@ -42,9 +47,20 @@ function DesktopHome({ positions, hovered, onHover, onMove, onOpen }) {
             <p className="m-0 max-w-90 font-serif text-[19px] leading-normal text-[#1d1d1d]">
               {INTRO_TEXT}
             </p>
-            <div className="mt-10 inline-flex items-center gap-2 font-sans text-xs font-semibold lowercase tracking-[.12em] text-[#3c4a00]">
-              <span className="text-xs">✦</span> you can arrange the folders as you want!
-            </div>
+            <a
+              href="https://www.linkedin.com/in/charlene-liu-a5064418b"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="mt-3 inline-block font-news text-xs bg-neutral-50 font-semibold text-[#3c4a00] underline underline-offset-2 hover:bg-blue-700 hover:text-white"
+            >
+              LinkedIn
+              <ArrowUpRight />
+            </a>
+          </div>
+
+          <div className="pointer-events-auto absolute right-10 top-8 z-40 inline-flex items-center gap-2 font-sans text-xs font-semibold lowercase tracking-[.12em] text-[#3c4a00]">
+            <span className="text-xs">✦</span> you can arrange the folders as
+            you want!
           </div>
 
           <div className="pointer-events-none absolute inset-0 z-30">
@@ -85,9 +101,19 @@ function MobileHome({ selected, onTap, onDeselect }) {
       <h1 className="mb-3.5 mt-6.5 font-serif text-[64px] font-normal leading-[.9] tracking-[-1.5px]">
         Hello!
       </h1>
-      <p className="mb-9 mt-0 font-serif text-lg leading-normal text-[#1d1d1d]">
+      <p className="mt-0 mb-2 font-serif text-lg leading-normal text-[#1d1d1d]">
         {INTRO_TEXT}
       </p>
+      <a
+        href="https://www.linkedin.com/in/charlene-liu-a5064418b"
+        target="_blank"
+        rel="noopener noreferrer"
+        className="mb-9 inline-block font-news text-xs bg-neutral-50 font-semibold text-[#3c4a00] underline underline-offset-2 hover:bg-blue-700 hover:text-white"
+      >
+        LinkedIn
+        <ArrowUpRight />
+      </a>
+
       <div className="pt-7.5">
         {columns.map((column, index) => (
           <Folder

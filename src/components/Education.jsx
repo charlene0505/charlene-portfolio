@@ -22,7 +22,7 @@ export default function Education({ isMobile, column, onBack }) {
     >
       <div className="flex flex-col gap-8 px-8 py-4">
         <Summary column={column} />
-        <div className="flex flex-col gap-8 px-8">
+        <div className="flex flex-col gap-8">
           {column.items.map((item) => (
             <EducationEntry key={item.name} {...item} />
           ))}

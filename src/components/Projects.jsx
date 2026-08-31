@@ -1,8 +1,25 @@
 import { Suspense, lazy } from 'react'
 import OverlayShell from './OverlayShell'
-
+import ArrowUpRight from '../../public/assets/ArrowUpRight';
 const ThreeShowcase = lazy(() => import('./ThreeShowcase'))
 const ColoringBook = lazy(() => import("./ColoringBook"));
+
+// function ArrowUpRight() {
+//   return (
+//     <svg
+//       className="ml-1 inline-block h-[0.8em] w-[0.8em]"
+//       viewBox="0 0 24 24"
+//       fill="none"
+//       stroke="currentColor"
+//       strokeWidth="2.5"
+//       strokeLinecap="round"
+//       strokeLinejoin="round"
+//       aria-hidden="true"
+//     >
+//       <path d="M7 17L17 7M17 7H7M17 7V17" />
+//     </svg>
+//   )
+// }
 
 export default function Projects({ isMobile, column, activeItem, onSetActiveItem, onBack }) {
   const item = column.items[activeItem]
@@ -67,7 +84,8 @@ export default function Projects({ isMobile, column, activeItem, onSetActiveItem
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Github ↗
+                Github
+                <ArrowUpRight />
               </a>
             )}
             {item.demoLink && (
@@ -77,13 +95,14 @@ export default function Projects({ isMobile, column, activeItem, onSetActiveItem
                 target="_blank"
                 rel="noopener noreferrer"
               >
-                Live demo ↗
+                Live demo
+                <ArrowUpRight />
               </a>
             )}
           </div>
         </div>
 
-        <div className="flex flex-col pt-60 md:py-20">
+        <div className="flex flex-col pt-72 md:py-20">
           {item.embed === "color-book" ? (
             <div className="flex-[1_1_200px]">
               <Suspense

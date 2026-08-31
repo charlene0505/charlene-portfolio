@@ -1,7 +1,8 @@
 import PillTab from "./Tab"
+import Breadcrumb from "./Breadcrumb"
 
 function WritingList({ posts, onOpen }) {
-  if (posts.length === 0) {
+  if (posts.length === 1) {
     return <p className="font-sans text-[15px] text-[#0d0d0d]">More writing coming soon.</p>
   }
 
@@ -116,17 +117,20 @@ export default function CreativeView({ isMobile, column, subKey, itemKey, onNavi
 
   return (
     <div className="view-in px-6 pb-10 pt-5 bg-white">
-      <button
-        className="flex cursor-pointer items-center gap-2.5 bg-transparent px-1.5 pb-3.5 pt-[30px] font-sans text-[15px] text-[#0f0f0f]"
-        onClick={onBack}
-      >
-        <span className="inline-block text-[30px] leading-none">←</span>
-      </button>
+      <Breadcrumb
+        items={[
+          { label: 'Home', onClick: onBack },
+          activePost
+            ? { label: column.name, onClick: () => onNavigate(activeSubcategory.id) }
+            : { label: column.name },
+          ...(activePost ? [{ label: activePost.title }] : []),
+        ]}
+      />
 
       <div className="relative mx-auto min-h-[80vh] max-w-[1180px]">
         {!isMobile && (
           <div
-            className="absolute -inset-8 rounded-[40px] bg-[#6db2f2] opacity-70 blur-2xl"
+            className="pointer-events-none absolute -inset-8 rounded-[40px] bg-[#6db2f2] opacity-70 blur-2xl"
             aria-hidden="true"
           />
         )}
