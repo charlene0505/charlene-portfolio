@@ -7,6 +7,7 @@ import Projects from './components/Projects'
 import Experience from './components/Experience'
 import Education from './components/Education'
 import CreativeView from './components/CreativeView'
+import ScrollToTop from './components/ScrollToTop'
 import { columns } from './data/columns'
 
 const DEFAULT_POSITIONS = [
@@ -111,12 +112,15 @@ export default function App() {
   }
 
   return (
-    <Routes>
-      <Route path="/" element={<Home positions={positions} onMove={moveFolder} />} />
-      <Route path="/:columnId" element={<ColumnRoute />} />
-      <Route path="/:columnId/:part1" element={<ColumnRoute />} />
-      <Route path="/:columnId/:part1/:part2" element={<ColumnRoute />} />
-      <Route path="*" element={<Navigate to="/" replace />} />
-    </Routes>
+    <>
+      <ScrollToTop />
+      <Routes>
+        <Route path="/" element={<Home positions={positions} onMove={moveFolder} />} />
+        <Route path="/:columnId" element={<ColumnRoute />} />
+        <Route path="/:columnId/:part1" element={<ColumnRoute />} />
+        <Route path="/:columnId/:part1/:part2" element={<ColumnRoute />} />
+        <Route path="*" element={<Navigate to="/" replace />} />
+      </Routes>
+    </>
   )
 }

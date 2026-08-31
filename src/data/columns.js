@@ -114,7 +114,7 @@ export const columns = [
   },
   {
     id: "tech",
-    label: "(Tech)",
+    label: "(Fun Tech)",
     name: "24ish",
     subtitle: "OneHourAPicture — Photo Sharing App",
     layout: "projects",

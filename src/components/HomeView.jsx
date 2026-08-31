@@ -4,9 +4,8 @@ import useStageFit from '../hooks/useStageFit'
 import { columns } from '../data/columns'
 
 const INTRO_TEXT =
-  'I’m a designer and developer working where research, systems, and a little bit of play overlap. ' +
-  'I build interfaces that stay clear under pressure — and occasionally fold them into folders. ' +
-  'Open one to peek inside.'
+  "I'm a full stack developer with experience shipping features end to end, with background across design, business and computer science." +
+  " I love to build products that can be enjoyed by users and bring not only function but also fun.";
 
 const STAGE_WIDTH = 1180
 
@@ -43,9 +42,8 @@ function DesktopHome({ positions, hovered, onHover, onMove, onOpen }) {
             <p className="m-0 max-w-90 font-serif text-[19px] leading-normal text-[#1d1d1d]">
               {INTRO_TEXT}
             </p>
-            <div className="mt-5 inline-flex items-center gap-2 font-sans text-xs font-semibold uppercase tracking-[.12em] text-[#3c4a00]">
-              <span className="text-[15px]">✦</span> drag the folders — click one
-              to open
+            <div className="mt-10 inline-flex items-center gap-2 font-sans text-xs font-semibold lowercase tracking-[.12em] text-[#3c4a00]">
+              <span className="text-xs">✦</span> you can arrange the folders as you want!
             </div>
           </div>
 

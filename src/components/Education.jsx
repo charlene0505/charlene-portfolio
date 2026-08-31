@@ -14,15 +14,20 @@ function Summary({ column }) {
 
 export default function Education({ isMobile, column, onBack }) {
   return (
-    <OverlayShell isMobile={isMobile} column={column} onBack={onBack} showTabs={false}>
-      <div className="flex flex-col gap-8">
+    <OverlayShell
+      isMobile={isMobile}
+      column={column}
+      onBack={onBack}
+      showTabs={false}
+    >
+      <div className="flex flex-col gap-8 px-8 py-4">
         <Summary column={column} />
-        <div className="flex flex-col gap-8">
+        <div className="flex flex-col gap-8 px-8">
           {column.items.map((item) => (
             <EducationEntry key={item.name} {...item} />
           ))}
         </div>
       </div>
     </OverlayShell>
-  )
+  );
 }
