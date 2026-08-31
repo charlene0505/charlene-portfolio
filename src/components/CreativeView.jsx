@@ -178,7 +178,7 @@ export default function CreativeView({ isMobile, column, subKey, itemKey, onNavi
       )}
 
       {isMobile && (
-        <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] border-[3px] border-[#7fb3ef]" />
+        <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] outline-30 outline-[#7fb3ef]" />
       )}
     </div>
   )

@@ -18,7 +18,7 @@ function MobileFolder({ column, index, selected, onTap }) {
 
   return (
     <div
-      className="relative cursor-pointer transition-transform duration-[420ms] ease-[cubic-bezier(.2,.8,.2,1)]"
+      className="relative cursor-pointer transition-transform duration-420 ease-[cubic-bezier(.2,.8,.2,1)] shadow shadow-top"
       style={{
         zIndex: 10 + index,
         marginTop: index === 0 ? 0 : -40,

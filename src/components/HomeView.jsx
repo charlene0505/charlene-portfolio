@@ -133,7 +133,7 @@ export default function HomeView({
         />
       )}
       {isMobile && (
-        <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] border-[3px] border-[#a8d91f]" />
+        <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] outline-30 outline-[#a8d91f]" />
       )}
     </div>
   );

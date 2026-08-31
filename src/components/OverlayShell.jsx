@@ -62,7 +62,7 @@ export default function OverlayShell({
       </div>
 
       {isMobile && (
-        <div className="pointer-events-none fixed inset-[7px] z-[90] rounded-[34px] border-[3px] border-[#7fb3ef]" />
+        <div className="pointer-events-none fixed inset-1.75 z-90 rounded-[34px]  outline-[#7fb3ef] outline-25" />
       )}
     </div>
   );
